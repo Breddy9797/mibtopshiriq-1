@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static  %}
+{% block title %}
+Login Page
+{% endblock %}
+{% block content %}
+
+<div class="container" id="login">
+
+    <form class="form-signin">
+        <h2 class="form-signin-heading">Tisimga kirish</h2>
+        <input type="text" class="input-block-level" placeholder="Login">
+        <input type="password" class="input-block-level" placeholder="Parol">
+        <label class="checkbox">
+            <input type="checkbox" value="remember-me"> Eslab qolish
+        </label>
+        <button class="btn btn-large btn-primary" type="submit">Kriish</button>
+    </form>
+
+</div> <!-- /container -->
+<script src="{% static 'vendors/jquery-1.9.1.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+{% endblock %}
