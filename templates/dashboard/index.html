@@ -97,9 +97,19 @@ Index Page
                                                 <td> {{topshiriq.topshiriq_turi}}</td>
                                                 <td> {{topshiriq.qisqacha_mazmun}}</td>
                                                 <td> {{topshiriq.holat}}</td>
-                                                <td class="center"> {{topshiriq.prioritet}}</td>
+                                                <td class="center">
+                                                    {% if topshiriq.prioritet == "Muhim" %}
+                                                        <span class="label label-warning">{{topshiriq.prioritet}}</span>
+                                                    {% elif topshiriq.prioritet == "O'ta muhim"%}
+                                                        <span class="label label-important">{{topshiriq.prioritet}}</span>
+                                                    {% else %}
+                                                        <span class="label label-info">{{topshiriq.prioritet}}</span>
+                                                    {% endif %} 
+
+
+                                                </td>
                                                 <td class="center"> {{topshiriq.reg_date}}</td>
-                                                <td class="center"> {{topshiriq.muddat}}</td>
+                                                <td class="center"> {{topshiriq.muddat|timeuntil}}</td>
                                                 </tr>
                                         {% endfor %}
                                         </tbody>
