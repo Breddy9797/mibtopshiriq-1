@@ -1,5 +1,11 @@
 from django.shortcuts import render
 
+from .models import Topshiriq
+
 
 def index(request):
-    return render(request, 'dashboard/index.html')
+    topshiriqlar = Topshiriq.objects.all()
+    context = {
+        'topshiriqlar': topshiriqlar
+    }
+    return render(request, 'dashboard/index.html', context)
