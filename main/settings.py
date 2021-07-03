@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-fkmi7pee(y80+$4$ra75m(qbqu21ky)fhg$c1%8uaz&bn!s@ua
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.115.19.167']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dashboard',
-    'user'
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +77,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mibtaskdb',
         'USER': 'postgres',
-        'PASSWORD': 'Comnet1993',
+        'PASSWORD': '72437243',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }

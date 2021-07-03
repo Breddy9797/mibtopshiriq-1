@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}Customer Page{% endblock %}
+{% block content %}
+    {% load static %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            {% include 'sidebar.html' %}
+            <div class="span9" id="content">
+
+                <div class="row-fluid">
+                    <!-- block -->
+                    <div class="block">
+                        <div class="navbar navbar-inner block-header">
+                            <div class="muted pull-left">Hodim haqida ma'lumot</div>
+                        </div>
+
+                        <div class="block-content collapse in">
+                            <table class="table table-borderless">
+                                <div class="fig">
+                                <img class="img-thumbnail" src="{{ user.profile.rasm.url }}"  width="250" align="right" vspace="10">
+                            </div>
+
+
+                                <tbody>
+                                <tr>
+                                    <th scope="row">Hodim</th>
+                                    <td>{{ user.username }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Bo'lim</th>
+                                    <td>{{ user.profile.bolim }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Rol</th>
+                                    <td>{{ user.profile.rol }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Telefon</th>
+                                    <td>{{ user.profile.telefon }}</td>
+                                </tr>
+
+                                </tbody>
+
+                            </table>
+
+
+
+                            <a class="btn btn-info btn-sm float-right" href="#">Tahrirlash</a>
+                        </div>
+                    </div>
+                    <!-- /block -->
+                </div>
+            </div>
+
+        </div>
+        <hr>
+        <footer align="center">
+            <p>&copy; FX 2021</p>
+        </footer>
+    </div>
+    <!--/.fluid-container-->
+<script src="{% static 'vendors/jquery-1.9.1.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'vendors/easypiechart/jquery.easy-pie-chart.js'%}"></script>
+<script src="{% static 'assets/scripts.js' %}"></script>
+<script src="{% static 'vendors/datatables/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'assets/DT_bootstrap.js' %}"></script>
+{% endblock %}
