@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static  %}
+{% block title %}
+Login Page
+{% endblock %}
+{% block content %}
+
+<div class="container" id="login">
+
+    <div class="row mt-5">
+        <form class="form-signin">
+
+            <div class="border bg-white p-3">
+                <h3>Logout sahifasi</h3>
+                <hr>
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <h4>Siz tizimdan chiqdingiz, qayta kirish uchun avtorizatsiyadan o'ting</h4>
+
+                </div>
+                <a href="{% url 'user-login'%}">Login</a>
+            </div>
+            </form>
+    </div>
+
+</div>
+<script src="{% static 'vendors/jquery-1.9.1.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+{% endblock %}

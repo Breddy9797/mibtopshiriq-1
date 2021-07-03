@@ -104,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru-ru'
+LANGUAGE_CODE = 'uz-uz'
 
 TIME_ZONE = 'ASIA/Tashkent'
 
@@ -132,3 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = (BASE_DIR / 'media/')
 
 MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = 'dash-index'
+
+LOGIN_URL = 'user-login'
