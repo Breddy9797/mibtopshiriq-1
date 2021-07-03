@@ -18,6 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from dashboard import views as dash_views
 from user import views as user_views
 from django.contrib.auth import views as auth_views
 
@@ -25,5 +26,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', include('dashboard.urls')),
     path('', auth_views.LoginView.as_view(template_name='user/login.html'), name='user-login'),
+    path('add/', dash_views.add_task, name='add-task'),
     path('logout/', auth_views.LogoutView.as_view(template_name='user/logout.html'), name='user-logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
