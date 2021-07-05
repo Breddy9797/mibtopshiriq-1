@@ -34,7 +34,7 @@ Index Page
 
                         <div class="container">
                             <div class="row my-5">
-                                <div class="span6">
+                                <div class="span5">
                                 <div class="col-md-6">
                                     <div class="bg-white">
                                         <canvas id="myChart1" width="400" height="300"></canvas>
@@ -43,10 +43,10 @@ Index Page
                                             var myChart1 = new Chart(ctx, {
                                                     type: 'pie',
                                                     data: {
-                                                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                                        labels: ['O\'ta muhim', 'Muhim', 'Odatiy'],
                                                         datasets: [{
                                                             label: 'Products',
-                                                            data: [12, 19, 3, 5, 2, 3],
+                                                            data: [{{ om_soni }}, {{ m_soni }}, {{ o_soni }}],
                                                             backgroundColor: [
                                                                 'rgba(255, 99, 132, 1)',
                                                                 'rgba(54, 162, 235, 1)',
@@ -81,7 +81,10 @@ Index Page
                                     </div>
                                 </div>
                                 </div>
-                                <div class="span6">
+                                <div class="span2">
+                                    &nbsp;
+                                </div>
+                                <div class="span5">
                                 <div class="col-md-6">
                                     <div class="bg-white">
                                         <canvas id="myChart" width="400" height="300"></canvas>
@@ -90,10 +93,10 @@ Index Page
                                             var myChart = new Chart(ctx, {
                                                     type: 'bar',
                                                     data: {
-                                                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                                        labels: [{% for hodim in hodimlar %} '{{hodim.username}}', {% endfor %}],
                                                         datasets: [{
-                                                            label: 'Products',
-                                                            data: [12, 19, 3, 5, 2, 3],
+                                                            label: 'Hodimlar',
+                                                            data: [{{admin_soni}}, {{alisher_soni}}],
                                                             backgroundColor: [
                                                                 'rgba(255, 99, 132, 1)',
                                                                 'rgba(54, 162, 235, 1)',

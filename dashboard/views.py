@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 
 from .models import Topshiriq
 from .forms import TopshiriqForm
@@ -9,8 +10,31 @@ from .forms import TopshiriqForm
 @login_required
 def index(request):
     topshiriqlar = Topshiriq.objects.all()
+    hodimlar = User.objects.all()
+    admin_soni = Topshiriq.objects.filter(ijrochi=1).count()
+    alisher_soni = Topshiriq.objects.filter(ijrochi=2).count()
+    om_soni = Topshiriq.objects.filter(prioritet='O\'ta muhim').count()
+    m_soni = Topshiriq.objects.filter(prioritet='Muhim').count()
+    o_soni = Topshiriq.objects.filter(prioritet='Oddiy').count()
+    ariza = Topshiriq.objects.filter(topshiriq_turi='Ariza').count()
+    murojat = Topshiriq.objects.filter(topshiriq_turi='Murojat').count()
+    taklif = Topshiriq.objects.filter(topshiriq_turi='Taklif').count()
+    aloqa_xati = Topshiriq.objects.filter(topshiriq_turi='Aloqa xati').count()
+    topshiriq = Topshiriq.objects.filter(topshiriq_turi='Topshiriq').count()
+
     context = {
         'topshiriqlar': topshiriqlar,
+        'om_soni': om_soni,
+        'm_soni': m_soni,
+        'o_soni': o_soni,
+        'hodimlar': hodimlar,
+        'admin_soni': admin_soni,
+        'alisher_soni': alisher_soni,
+        'ariza': ariza,
+        'murojat': murojat,
+        'taklif': taklif,
+        'aloqa_xati': aloqa_xati,
+        'topshiriq': topshiriq,
     }
     return render(request, 'dashboard/index.html', context)
 

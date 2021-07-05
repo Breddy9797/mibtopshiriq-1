@@ -1,27 +1,27 @@
-                <div class="span3" id="sidebar">
-                    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-                        <li class="active">
-                            <a href="{% url 'dash-index'%}"><i class="icon-chevron-right"></i> Bosh sahifa</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="icon-chevron-right"></i> Kalendar</a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="badge badge-success pull-right">731</span> Murojat</a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="badge badge-success pull-right">812</span> Topshiriq</a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="badge badge-info pull-right">27</span> Shikoyat</a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="badge badge-important pull-right">83</span> Hodimlar</a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="badge badge-warning pull-right">4,231</span> Loglar</a>
-                        </li>
-                    </ul>
-                </div>
+<div class="span3" id="sidebar">
+    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+        <li class="active">
+            <a href="{% url 'dash-index'%}"><i class="icon-chevron-right"></i> Bosh sahifa</a>
+        </li>
+        <li>
+            <a href="#"><i class="icon-chevron-right"></i> Kalendar</a>
+        </li>
+        <li>
+            <a href="#"><span class="badge badge-success pull-right">{{ariza}}</span> Ariza</a>
+        </li>
+        <li>
+            <a href="#"><span class="badge badge-warning pull-right">{{murojat}}</span> Murojat</a>
+        </li>
+        <li>
+            <a href="#"><span class="badge badge-important pull-right">{{taklif}}</span> Taklif</a>
+        </li>
+        <li>
+            <a href="#"><span class="badge badge-info pull-right">{{aloqa_xati}}</span> Aloqa xati</a>
+        </li>
+        <li>
+            <a href="#"><span class="badge badge-inverse pull-right">{{topshiriq}}</span> Topshiiriq</a>
+        </li>
+    </ul>
+</div>
 
-                <!--/span-->
+<!--/span-->
