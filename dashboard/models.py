@@ -35,6 +35,7 @@ PRIORITET = (
 
 
 class Topshiriq(models.Model):
+    topshiriq_raqami = models.CharField(max_length=120, null=True)
     topshiriq_turi = models.CharField(max_length=50, choices=TOPSHIRIQ_TURI, null=True)
     qisqacha_mazmun = models.CharField(max_length=120, null=True)
     toliq_mazmun = models.TextField(null=True)

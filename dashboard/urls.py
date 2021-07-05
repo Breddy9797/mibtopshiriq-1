@@ -17,6 +17,8 @@ from django.urls import path
 from dashboard import views as dash_views
 
 urlpatterns = [
-    path('', dash_views.index, name='dash-index')
+    path('', dash_views.index, name='dash-index'),
+    path('add/', dash_views.add_task, name='add-task'),
+    path('detail/<int:pk>', dash_views.detail, name='dash-detail'),
 
 ]
