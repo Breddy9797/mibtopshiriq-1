@@ -27,6 +27,7 @@ urlpatterns = [
     path('index/', include('dashboard.urls')),
     path('profile/', user_view.profile, name='user-profile'),
     path('', auth_views.LoginView.as_view(template_name='user/login.html'), name='user-login'),
+    path('profile/update/', user_view.profile_update, name='user-profile-update'),
     path('add/', dash_views.add_task, name='add-task'),
     path('logout/', auth_views.LogoutView.as_view(template_name='user/logout.html'), name='user-logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

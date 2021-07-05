@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Customer Page{% endblock %}
+{% block content %}
+    {% load static %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            {% include 'sidebar.html' %}
+            <div class="span9" id="content">
+
+                <div class="row-fluid">
+                    <!-- block -->
+                    <div class="block">
+                        <div class="navbar navbar-inner block-header">
+                            <div class="muted pull-left">Hodim haqida ma'lumot</div>
+                        <hr>
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ user_form }}
+                            {{ profile_form }}
+<input class="btn btn-info", type="submit", value="Update">
+                        </form>
+
+                        </div>
+
+
+
+
+                        </div>
+                    </div>
+                    <!-- /block -->
+                </div>
+            </div>
+
+        </div>
+        <hr>
+        <footer align="center">
+            <p>&copy; FX 2021</p>
+        </footer>
+    </div>
+    <!--/.fluid-container-->
+<script src="{% static 'vendors/jquery-1.9.1.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'vendors/easypiechart/jquery.easy-pie-chart.js'%}"></script>
+<script src="{% static 'assets/scripts.js' %}"></script>
+<script src="{% static 'vendors/datatables/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'assets/DT_bootstrap.js' %}"></script>
+{% endblock %}
