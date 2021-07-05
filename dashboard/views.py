@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
@@ -20,6 +21,8 @@ def add_task(request):
         form = TopshiriqForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            topshiriq_raqami = form.cleaned_data.get('topshiriq_raqami')
+            messages.success(request, f'{topshiriq_raqami} raqamli topshiriq yaratildi')
             return redirect('dash-index')
     else:
         form = TopshiriqForm()
@@ -45,6 +48,8 @@ def update(request, pk):
         form = TopshiriqForm(request.POST, request.FILES, instance=task)
         if form.is_valid():
             form.save()
+            topshiriq_raqami = form.cleaned_data.get('topshiriq_raqami')
+            messages.success(request, f'{topshiriq_raqami} raqamli topshiriq muvofaqiyatli o\'zgardi')
             return redirect('dash-index')
     else:
         form = TopshiriqForm(instance=task)
@@ -58,5 +63,6 @@ def delete(request, pk):
     task = Topshiriq.objects.get(id=pk)
     if request.method == 'POST':
         task.delete()
+        messages.success(request, ' Topshiriq o\'chirildi!')
         return redirect('dash-index')
     return render(request, 'dashboard/delete.html')
