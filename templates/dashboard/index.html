@@ -87,6 +87,7 @@ Index Page
                                    id="example2">
                                 <thead>
                                 <tr>
+                                    <th>Topshiriq raqami</th>
                                     <th>Topshiriq turi</th>
                                     <th>Qisqacha mazmun</th>
                                     <th>Holat</th>
@@ -98,8 +99,9 @@ Index Page
                                 <tbody>
                                 {% for topshiriq in topshiriqlar %}
                                 <tr class="odd gradeX">
+                                    <td><a href="{% url 'dash-detail' topshiriq.id%}">{{topshiriq.topshiriq_raqami}}</a></td>
                                     <td> {{topshiriq.topshiriq_turi}}</td>
-                                    <td> {{topshiriq.qisqacha_mazmun}}</td>
+                                    <td><a href="{% url 'dash-detail' topshiriq.id%}">{{topshiriq.qisqacha_mazmun}}</a></td>
                                     <td> {{topshiriq.holat}}</td>
                                     <td class="center">
                                         {% if topshiriq.prioritet == "Muhim" %}

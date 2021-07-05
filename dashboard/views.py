@@ -14,6 +14,7 @@ def index(request):
     return render(request, 'dashboard/index.html', context)
 
 
+@login_required
 def add_task(request):
     if request.method == 'POST':
         form = TopshiriqForm(request.POST)
@@ -26,3 +27,11 @@ def add_task(request):
         'form': form,
     }
     return render(request, 'dashboard/add_task.html', context)
+
+
+def detail(request, pk):
+    task = Topshiriq.objects.get(id=pk)
+    context = {
+        'task': task,
+    }
+    return render(request, 'dashboard/detail.html', context)

@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static  %}
+{% block title %}
+Index Page
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row-fluid">
+        {% include 'sidebar.html' %}
+        <div class="span9" id="content">
+            <div class="row-fluid">
+                <!-- block -->
+                <div class="block">
+                    <div class="navbar navbar-inner block-header">
+                        <div class="muted pull-left">Topshitiq Detallari</div>
+                        <div class="pull-right">
+                            {% if task.prioritet == "Muhim" %}
+                            <span class="label label-warning">{{task.prioritet}}</span>
+                            {% elif task.prioritet == "O'ta muhim"%}
+                            <span class="label label-important">{{task.prioritet}}</span>
+                            {% else %}
+                            <span class="label label-info">{{task.prioritet}}</span>{% endif %}
+                        </div>
+                    </div>
+                    <div class="block-content collapse in">
+                        <div class="span5">
+                            <table class="table bg-white table-borderless">
+                                <tbody>
+                                <tr>
+                                    <th scope="row">Topshiriq raqami:</th>
+                                    <td>{{task.topshiriq_raqami}}</td>
+                                </tr><tr>
+                                    <th scope="row">Topshiriq turi:</th>
+                                    <td>{{task.topshiriq_turi}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Qisqacha mazmun:</th>
+                                    <td>{{task.qisqacha_mazmun}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">To'liq mazmun:</th>
+                                    <td>{{task.toliq_mazmun}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Holati:</th>
+                                    <td>{{task.holat}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Ijrochi:</th>
+                                    <td>{{task.ijrochi}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Kanal:</th>
+                                    <td>{{task.kanal}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Kim tomonidan:</th>
+                                    <td>{{task.kim_tomonidan}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Ilova:</th>
+                                    <td><a href="#"><span class="badge badge-info"><i class="icon-folder-open icon-white"></i></span></a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Izoh:</th>
+                                    <td>{{task.izoh}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Registratsiya sanasi:</th>
+                                    <td>{{task.reg_date}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Muddat:</th>
+                                    <td>{{task.muddat}}</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="span7" align="center">
+                            <img class="img-thumbnail" src="{% static 'images/detail.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /block -->
+        </div>
+    </div>
+
+</div>
+<hr>
+<footer align="center">
+    <p>&copy; FX 2021</p>
+</footer>
+</div>
+<!--/.fluid-container-->
+<script src="{% static 'vendors/jquery-1.9.1.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'vendors/easypiechart/jquery.easy-pie-chart.js'%}"></script>
+<script src="{% static 'assets/scripts.js' %}"></script>
+<script src="{% static 'vendors/datatables/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'assets/DT_bootstrap.js' %}"></script>
+<script>
+    $(function () {
+        // Easy pie charts
+        $('.chart').easyPieChart({animate: 1000});
+    });
+</script>
+<script>
+    $(function () {
+
+    });
+</script>
+{% endblock %}
+
+
