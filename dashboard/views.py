@@ -17,7 +17,7 @@ def index(request):
 @login_required
 def add_task(request):
     if request.method == 'POST':
-        form = TopshiriqForm(request.POST)
+        form = TopshiriqForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('dash-index')
@@ -29,9 +29,34 @@ def add_task(request):
     return render(request, 'dashboard/add_task.html', context)
 
 
+@login_required
 def detail(request, pk):
     task = Topshiriq.objects.get(id=pk)
     context = {
         'task': task,
     }
     return render(request, 'dashboard/detail.html', context)
+
+
+@login_required
+def update(request, pk):
+    task = Topshiriq.objects.get(id=pk)
+    if request.method == 'POST':
+        form = TopshiriqForm(request.POST, request.FILES, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('dash-index')
+    else:
+        form = TopshiriqForm(instance=task)
+    context = {
+        'form': form,
+    }
+    return render(request, 'dashboard/update.html', context)
+
+
+def delete(request, pk):
+    task = Topshiriq.objects.get(id=pk)
+    if request.method == 'POST':
+        task.delete()
+        return redirect('dash-index')
+    return render(request, 'dashboard/delete.html')

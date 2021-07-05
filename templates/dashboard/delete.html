@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static  %}
+{% block title %}
+Index Page
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row-fluid">
+
+            <div class="row-fluid">
+                <!-- block -->
+                <div class="block" align="center">
+                    <div class="container">
+                        <div class="row mt-5">
+                            <div class="col-md-6 offset-md-3">
+                                <div class="border bg-white p-3">
+                                    <h3>Topshiriq o'chirish sahifasi</h3>
+                                    <hr>
+                                    <div class="alert alert-danger">
+                                        <h4>Haqiqatdan ham o'chirmoqchimisiz ?</h4>
+                                    </div>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        {{ form }}
+                                        <a class="btn btn-secondary" href="{% url 'dash-index'%}">Qaytish</a>
+                                        <input class="btn btn-danger" type="submit" value="O'chirish">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /block -->
+
+    </div>
+
+</div>
+<hr>
+<footer align="center">
+    <p>&copy; FX 2021</p>
+</footer>
+</div>
+<!--/.fluid-container-->
+<script src="{% static 'vendors/jquery-1.9.1.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'vendors/easypiechart/jquery.easy-pie-chart.js'%}"></script>
+<script src="{% static 'assets/scripts.js' %}"></script>
+<script src="{% static 'vendors/datatables/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'assets/DT_bootstrap.js' %}"></script>
+<script>
+    $(function () {
+        // Easy pie charts
+        $('.chart').easyPieChart({animate: 1000});
+    });
+</script>
+<script>
+    $(function () {
+
+    });
+</script>
+{% endblock %}
+
+

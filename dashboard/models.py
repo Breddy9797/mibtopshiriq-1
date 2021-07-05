@@ -44,7 +44,7 @@ class Topshiriq(models.Model):
     kanal = models.CharField(max_length=20, choices=KANAL)
     kim_tomonidan = models.CharField(max_length=30, choices=KIM_TOMONIDAN)
     prioritet = models.CharField(max_length=20, choices=PRIORITET)
-    ilova = models.FileField(upload_to='Ilovalar', null=True, blank=True)
+    ilova = models.FileField(upload_to='Ilovalar', null=True)
     izoh = models.TextField()
     reg_date = models.DateField(auto_now_add=True)
     muddat = models.DateField(auto_now_add=False, auto_now=False, blank=True, null=True)
