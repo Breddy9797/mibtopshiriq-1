@@ -9,50 +9,131 @@ Index Page
         {% include 'sidebar.html' %}
         <div class="span9" id="content">
             <div class="row-fluid">
+                {% for message in messages %}
+
+                {% if message %}
                 <div class="alert alert-success">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-
-
-                    <h4>Hush kelibsiz {{ user.username }}!</h4>
-                    The operation completed successfully
-
-
+                    {{message}}
                 </div>
+                {% endif %}
+                {% endfor %}
+
             </div>
             <div class="row-fluid">
                 <!-- block -->
                 <div class="block">
                     <div class="navbar navbar-inner block-header">
-                        <div class="muted pull-left">Statistics</div>
+                        <div class="muted pull-left">Statistika</div>
                         <div class="pull-right"><span class="badge badge-warning">View More</span>
 
                         </div>
                     </div>
                     <div class="block-content collapse in">
-                        <div class="span3">
-                            <div class="chart" data-percent="73">73%</div>
-                            <div class="chart-bottom-heading"><span class="label label-info">Visitors</span>
+                        <!--Graphs-->
 
+                        <div class="container">
+                            <div class="row my-5">
+                                <div class="span5">
+                                <div class="col-md-6">
+                                    <div class="bg-white">
+                                        <canvas id="myChart1" width="400" height="300"></canvas>
+                                        <script>
+                                            var ctx = document.getElementById('myChart1').getContext('2d');
+                                            var myChart1 = new Chart(ctx, {
+                                                    type: 'pie',
+                                                    data: {
+                                                        labels: ['O\'ta muhim', 'Muhim', 'Odatiy'],
+                                                        datasets: [{
+                                                            label: 'Products',
+                                                            data: [{{ om_soni }}, {{ m_soni }}, {{ o_soni }}],
+                                                            backgroundColor: [
+                                                                'rgba(255, 99, 132, 1)',
+                                                                'rgba(54, 162, 235, 1)',
+                                                                'rgba(255, 206, 86, 1)',
+                                                                'rgba(75, 192, 192, 1)',
+                                                                'rgba(153, 102, 255, 1)',
+                                                                'rgba(255, 159, 64, 1)'
+                                                            ],
+                                                            borderColor: [
+                                                                'rgba(255, 99, 132, 1)',
+                                                                'rgba(54, 162, 235, 1)',
+                                                                'rgba(255, 206, 86, 1)',
+                                                                'rgba(75, 192, 192, 1)',
+                                                                'rgba(153, 102, 255, 1)',
+                                                                'rgba(255, 159, 64, 1)'
+                                                            ],
+                                                            borderWidth: 1
+                                                        }]
+                                                    },
+                                                    options: {
+                                                        scales: {
+                                                            yAxes: [{
+                                                                ticks: {
+                                                                    beginAtZero: true
+                                                                }
+                                                            }]
+                                                        }
+                                                    }
+                                                })
+                                            ;
+                                        </script>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="span2">
+                                    &nbsp;
+                                </div>
+                                <div class="span5">
+                                <div class="col-md-6">
+                                    <div class="bg-white">
+                                        <canvas id="myChart" width="400" height="300"></canvas>
+                                        <script>
+                                            var ctx = document.getElementById('myChart').getContext('2d');
+                                            var myChart = new Chart(ctx, {
+                                                    type: 'bar',
+                                                    data: {
+                                                        labels: [{% for hodim in hodimlar %} '{{hodim.username}}', {% endfor %}],
+                                                        datasets: [{
+                                                            label: 'Hodimlar',
+                                                            data: [{{admin_soni}}, {{alisher_soni}}],
+                                                            backgroundColor: [
+                                                                'rgba(255, 99, 132, 1)',
+                                                                'rgba(54, 162, 235, 1)',
+                                                                'rgba(255, 206, 86, 1)',
+                                                                'rgba(75, 192, 192, 1)',
+                                                                'rgba(153, 102, 255, 1)',
+                                                                'rgba(255, 159, 64, 1)'
+                                                            ],
+                                                            borderColor: [
+                                                                'rgba(255, 99, 132, 1)',
+                                                                'rgba(54, 162, 235, 1)',
+                                                                'rgba(255, 206, 86, 1)',
+                                                                'rgba(75, 192, 192, 1)',
+                                                                'rgba(153, 102, 255, 1)',
+                                                                'rgba(255, 159, 64, 1)'
+                                                            ],
+                                                            borderWidth: 1
+                                                        }]
+                                                    },
+                                                    options: {
+                                                        scales: {
+                                                            yAxes: [{
+                                                                ticks: {
+                                                                    beginAtZero: true
+                                                                }
+                                                            }]
+                                                        }
+                                                    }
+                                                })
+                                            ;
+                                        </script>
+                                    </div>
+                                </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="span3">
-                            <div class="chart" data-percent="53">53%</div>
-                            <div class="chart-bottom-heading"><span class="label label-info">Page Views</span>
-
-                            </div>
-                        </div>
-                        <div class="span3">
-                            <div class="chart" data-percent="83">83%</div>
-                            <div class="chart-bottom-heading"><span class="label label-info">Users</span>
-
-                            </div>
-                        </div>
-                        <div class="span3">
-                            <div class="chart" data-percent="13">13%</div>
-                            <div class="chart-bottom-heading"><span class="label label-info">Orders</span>
-
-                            </div>
-                        </div>
+                        <!--End Graphs-->
                     </div>
                 </div>
                 <!-- /block -->
@@ -99,9 +180,11 @@ Index Page
                                 <tbody>
                                 {% for topshiriq in topshiriqlar %}
                                 <tr class="odd gradeX">
-                                    <td><a href="{% url 'dash-detail' topshiriq.id%}">{{topshiriq.topshiriq_raqami}}</a></td>
+                                    <td><a href="{% url 'dash-detail' topshiriq.id%}">{{topshiriq.topshiriq_raqami}}</a>
+                                    </td>
                                     <td> {{topshiriq.topshiriq_turi}}</td>
-                                    <td><a href="{% url 'dash-detail' topshiriq.id%}">{{topshiriq.qisqacha_mazmun}}</a></td>
+                                    <td><a href="{% url 'dash-detail' topshiriq.id%}">{{topshiriq.qisqacha_mazmun}}</a>
+                                    </td>
                                     <td> {{topshiriq.holat}}</td>
                                     <td class="center">
                                         {% if topshiriq.prioritet == "Muhim" %}
@@ -116,6 +199,17 @@ Index Page
                                     </td>
                                     <td class="center"> {{topshiriq.reg_date}}</td>
                                     <td class="center"> {{topshiriq.muddat|timeuntil}}</td>
+                                    <td class="center">
+                                        <a href="{% url 'dash-update' topshiriq.id%}">
+                                            <button class="btn btn-primary btn-mini"><i
+                                                    class="icon-pencil icon-white"></i></button>
+                                        </a>
+                                        <a href="{% url 'dash-delete' topshiriq.id%}">
+                                            <button class="btn btn-danger btn-mini"><i
+                                                    class="icon-trash icon-white"></i>
+                                            </button>
+                                        </a>
+                                    </td>
                                 </tr>
                                 {% endfor %}
                                 </tbody>
@@ -140,6 +234,7 @@ Index Page
 <script src="{% static 'assets/scripts.js' %}"></script>
 <script src="{% static 'vendors/datatables/js/jquery.dataTables.min.js' %}"></script>
 <script src="{% static 'assets/DT_bootstrap.js' %}"></script>
+
 <script>
     $(function () {
         // Easy pie charts
@@ -151,6 +246,7 @@ Index Page
 
     });
 </script>
+
 {% endblock %}
 
 
